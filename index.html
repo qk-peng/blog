@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>我的博客</title>
+    <style>
+        html,
+        body {
+            /* 将html和body元素的内外边距设置为零，目的是将网页的html和body元素默认的padding和margin覆盖掉，即消除内容区域和浏览器边界之间的空白。这是一种常见的做法，当一些元素的默认样式不适合我们的网页时，我们可以先将它们覆盖掉。 */
+            padding: 0;
+            margin: 0;
+            /* 让宽度或高度占满某个窗口 */
+
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            /*  display是CSS的一个非常重要的属性。 它除了可以指定了元素的显示类型，比如：
+
+                block 指定一个元素为块级元素；
+                inline 指定一个元素为行内元素；
+                inline-block 指定一个元素为行内块元素；
+                none 指定一个元素在文档流中不可见；
+                还能够指定元素里子元素的布局方式。比如display: flex 指定了body元素里的子元素使用flex规则来排列。flex，表示body是弹性盒子。
+            */
+            display: flex;
+            /* height: 100%; */
+            min-height: 100%;
+        }
+
+        a {
+            /* 注意text-decoration属性是不可继承属性，所以必须要设置在a标签上，不能设置在它的父容器上 */
+            text-decoration: none;
+        }
+
+        #main {
+            /* 默认情况下，元素sidebar的order值都是为0。因此，当我们把main元素的order设为1的时候，sidebar的默认order值是0， 所以main就被安排在sidebar的右侧了。当元素的order值相同的时候，flex布局按照元素的书写顺序沿主轴方向排列元素。 */
+            order: 1;
+            /* 相当于padding: 0 30px 0 30px */
+            padding: 0 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #sidebar {
+            /* 因为flex布局在沿主轴方向排列元素的时候，如果空间不足，默认会收缩元素空间，导致看上去width属性没有效果。
+            flex-shrink属性为零是指定元素在主轴方向上不收缩。
+             */
+            flex-shrink: 0;
+            width: 230px;
+            background-color: #222;
+            color: #999;
+        }
+
+        #siderbar a {
+            color: #999;
+        }
+
+        #profile {
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        #profile h1 {
+            font: size 1.5rem;
+            font-weight: normal;
+        }
+
+        #avatar img {
+            width: 150px;
+        }
+
+        #navigator {
+            padding-left: 40px;
+            line-height: 30px;
+        }
+
+        section {
+            /* flex-grow属性定义当主轴有多余空间时，空间如何分配，默认值为0，表示不分配多余空间。这里我们将section的flex-grow设为1，由于footer的flex-grow仍然是0，所以多余空间将被section完全占去，这样footer就会落到可视区底部了。 */
+            flex-grow: 1;
+            padding-bottom: 30px;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            font-weight: normal;
+        }
+
+        section p {
+            line-height: 180%;
+        }
+
+        article {
+            position: relative;
+            padding-bottom: 30px;
+            border-bottom: solid 1px #ccc;
+        }
+
+        article a {
+            color: #333;
+        }
+
+        /* article的position设置为relative，将.pubtime的position设置为absolute并给它设置top和right属性，这样就使得.pubtime元素相对于article的右上角进行定位 */
+        .pubtime {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        footer {
+            text-align: center;
+            line-height: 60px;
+            border-top: solid 1px #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <!-- 文章区 -->
+        <section>
+            <article>
+                <h2><a href="articles/01.html">我的第一篇文章</a></h2>
+                <p>正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要</p>
+                <div class="pubtime">发布时间<em>2020-05-01</em></div>
+                <div class="readmore"><a href="articles/01.html">阅读全文</a></div>
+            </article>
+            <article>
+                <h2><a href="articles/02.html">我的第二篇文章</a></h2>
+                <p>正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要</p>
+                <div class="pubtime">发布时间<em>2020-05-01</em></div>
+                <div class="readmore"><a href="articles/01.html">阅读全文</a></div>
+            </article>
+            <article>
+                <h2><a href="articles/03.html">我的第三篇文章</a></h2>
+                <p>正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要正文摘要</p>
+                <div class="pubtime">发布时间<em>2020-05-01</em></div>
+                <div class="readmore"><a href="articles/01.html">阅读全文</a></div>
+            </article>
+            <!-- 列表区 -->
+        </section>
+        <footer>
+            &copy;2021-我的博客-企科云
+        </footer>
+    </div>
+    <div id="sidebar">
+        <div id="profile">
+            <div id="avatar">
+                <a href="about.html"><img src="static/images/myavatar.png"></a>
+            </div>
+            <h1>我的博客</h1>
+        </div>
+        <div id="navigator">
+            <div><a href="index.html">首页</a></div>
+            <div><a href="friend.html">友链</a></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+            const pubtimeEls = document.querySelectorAll('.pubtime em');
+            pubtimeEls.forEach((el)=>{
+                const date = new Date(el.innerHTML);
+                el.innerHTML=`${date.getMonth() + 1}月${date.getDate()}日,${date.getFullYear()}`;
+              
+            let title = document.title;
+            window.addEventListener('blur',()=>{
+                document.title = '记得回来看我啊~';
+            });
+            window.addEventListener('focus',()=>{
+                document.title = title;
+            })
+            }) ;   
+    </script>
+</body>
+
+</html>
